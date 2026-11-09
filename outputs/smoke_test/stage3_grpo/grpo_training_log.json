@@ -1,0 +1,55 @@
+{
+  "stage": "grpo_rl",
+  "group_size": 4,
+  "kl_coef": 0.04,
+  "total_steps": 4,
+  "final_metrics": {
+    "step": 4,
+    "loss": 0.0,
+    "mean_reward": 0.1,
+    "accuracy_rate": 0.0,
+    "format_score": 0.0,
+    "avg_reasoning_words": 32.0,
+    "kl_div": 0.00021
+  },
+  "elapsed_sec": 0.75,
+  "history": [
+    {
+      "step": 1,
+      "loss": 0.0,
+      "mean_reward": 0.1,
+      "accuracy_rate": 0.0,
+      "format_score": 0.0,
+      "avg_reasoning_words": 31.75,
+      "kl_div": 0.00031
+    },
+    {
+      "step": 2,
+      "loss": 0.0,
+      "mean_reward": 0.1,
+      "accuracy_rate": 0.0,
+      "format_score": 0.0,
+      "avg_reasoning_words": 31.5,
+      "kl_div": 0.00023
+    },
+    {
+      "step": 3,
+      "loss": 0.0,
+      "mean_reward": 0.1,
+      "accuracy_rate": 0.0,
+      "format_score": 0.0,
+      "avg_reasoning_words": 32.0,
+      "kl_div": 0.0002
+    },
+    {
+      "step": 4,
+      "loss": 0.0,
+      "mean_reward": 0.1,
+      "accuracy_rate": 0.0,
+      "format_score": 0.0,
+      "avg_reasoning_words": 32.0,
+      "kl_div": 0.00021
+    }
+  ],
+  "adapter_path": "./outputs/smoke_test/stage3_grpo\\final_grpo_adapter"
+}

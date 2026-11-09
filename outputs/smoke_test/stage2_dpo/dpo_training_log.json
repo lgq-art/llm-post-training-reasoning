@@ -1,0 +1,43 @@
+{
+  "stage": "preference_alignment",
+  "algorithm": "dpo",
+  "beta": 0.1,
+  "simpo_gamma": null,
+  "total_steps": 3,
+  "final_metrics": {
+    "loss": 0.6508,
+    "reward_accuracy": 1.0,
+    "reward_margin": 0.0866,
+    "chosen_reward": 0.1644,
+    "rejected_reward": 0.0778,
+    "step": 3
+  },
+  "elapsed_sec": 0.18,
+  "history": [
+    {
+      "loss": 0.6797,
+      "reward_accuracy": 1.0,
+      "reward_margin": 0.0271,
+      "chosen_reward": 0.1521,
+      "rejected_reward": 0.125,
+      "step": 1
+    },
+    {
+      "loss": 0.6657,
+      "reward_accuracy": 1.0,
+      "reward_margin": 0.0558,
+      "chosen_reward": 0.1567,
+      "rejected_reward": 0.1009,
+      "step": 2
+    },
+    {
+      "loss": 0.6508,
+      "reward_accuracy": 1.0,
+      "reward_margin": 0.0866,
+      "chosen_reward": 0.1644,
+      "rejected_reward": 0.0778,
+      "step": 3
+    }
+  ],
+  "adapter_path": "./outputs/smoke_test/stage2_dpo\\final_dpo_adapter"
+}

@@ -1,0 +1,87 @@
+{
+  "summary": {
+    "benchmark": "gsm8k_synthetic",
+    "num_evaluated": 6,
+    "k": 4,
+    "pass_at_1": 0.0,
+    "pass_at_k": 0.0,
+    "maj_at_k": 0.0,
+    "format_compliance_rate": 0.0,
+    "avg_generated_tokens": 32.0,
+    "token_efficiency_score": 0.0
+  },
+  "records": [
+    {
+      "id": 0,
+      "question": "Alice buys 4 apples at $3 each. She uses a coupon that gives her $2 off the total bill. How many dollars does Alice pay in total?",
+      "gold_answer": "10",
+      "greedy_prediction": "233",
+      "greedy_correct": false,
+      "pass_at_k": false,
+      "maj_at_k": false,
+      "generated_tokens": 32,
+      "format_compliant": false,
+      "greedy_output": "455 239 140 81 323 in 424 79 4 500 183 87 190 457 234 352 227 431 467 14 131 each 459 430 233 99 uses 210 37 7 394 233"
+    },
+    {
+      "id": 1,
+      "question": "Alice buys 5 apples at $4 each. She uses a coupon that gives her $3 off the total bill. How many dollars does Alice pay in total?",
+      "gold_answer": "17",
+      "greedy_prediction": "14",
+      "greedy_correct": false,
+      "pass_at_k": false,
+      "maj_at_k": false,
+      "generated_tokens": 32,
+      "format_compliant": false,
+      "greedy_output": "455 239 140 81 261 87 190 457 234 352 227 431 467 14 131 each 459 430 233 99 assistant - 381 87 190 457 234 352 227 431 467 14"
+    },
+    {
+      "id": 2,
+      "question": "Alice buys 6 apples at $5 each. She uses a coupon that gives her $1 off the total bill. How many dollars does Alice pay in total?",
+      "gold_answer": "29",
+      "greedy_prediction": "283",
+      "greedy_correct": false,
+      "pass_at_k": false,
+      "maj_at_k": false,
+      "generated_tokens": 32,
+      "format_compliant": false,
+      "greedy_output": "455 239 140 81 261 87 190 457 234 352 227 431 Question 296 enclosed 490 23 260 42 250 185 450 409 471 10 32 256 293 <answer> costs 466 283"
+    },
+    {
+      "id": 3,
+      "question": "Alice buys 7 apples at $2 each. She uses a coupon that gives her $2 off the total bill. How many dollars does Alice pay in total?",
+      "gold_answer": "12",
+      "greedy_prediction": "32",
+      "greedy_correct": false,
+      "pass_at_k": false,
+      "maj_at_k": false,
+      "generated_tokens": 32,
+      "format_compliant": false,
+      "greedy_output": "455 239 140 81 323 in 424 79 4 500 183 87 190 457 234 352 227 431 Question 296 enclosed 490 23 260 42 250 185 450 409 471 10 32"
+    },
+    {
+      "id": 4,
+      "question": "Alice buys 8 apples at $3 each. She uses a coupon that gives her $3 off the total bill. How many dollars does Alice pay in total?",
+      "gold_answer": "21",
+      "greedy_prediction": "233",
+      "greedy_correct": false,
+      "pass_at_k": false,
+      "maj_at_k": false,
+      "generated_tokens": 32,
+      "format_compliant": false,
+      "greedy_output": "455 239 140 81 323 in 424 79 4 500 183 87 190 457 234 352 227 431 467 14 131 each 459 430 233 99 uses 210 37 7 394 233"
+    },
+    {
+      "id": 5,
+      "question": "Alice buys 9 apples at $4 each. She uses a coupon that gives her $1 off the total bill. How many dollars does Alice pay in total?",
+      "gold_answer": "35",
+      "greedy_prediction": "283",
+      "greedy_correct": false,
+      "pass_at_k": false,
+      "maj_at_k": false,
+      "generated_tokens": 32,
+      "format_compliant": false,
+      "greedy_output": "455 239 140 81 261 87 190 457 234 352 227 431 Question 296 enclosed 490 23 260 42 250 185 450 409 471 10 32 256 293 <answer> costs 466 283"
+    }
+  ]
+}

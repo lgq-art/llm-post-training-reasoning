@@ -1,0 +1,43 @@
+{
+  "stage": "preference_alignment",
+  "algorithm": "simpo",
+  "beta": 2.0,
+  "simpo_gamma": 0.5,
+  "total_steps": 3,
+  "final_metrics": {
+    "loss": 0.863,
+    "reward_accuracy": 1.0,
+    "reward_margin": 0.186,
+    "chosen_reward": -12.8231,
+    "rejected_reward": -13.009,
+    "step": 3
+  },
+  "elapsed_sec": 0.14,
+  "history": [
+    {
+      "loss": 0.9066,
+      "reward_accuracy": 0.75,
+      "reward_margin": 0.1142,
+      "chosen_reward": -12.8595,
+      "rejected_reward": -12.9737,
+      "step": 1
+    },
+    {
+      "loss": 0.856,
+      "reward_accuracy": 0.75,
+      "reward_margin": 0.2039,
+      "chosen_reward": -12.774,
+      "rejected_reward": -12.978,
+      "step": 2
+    },
+    {
+      "loss": 0.863,
+      "reward_accuracy": 1.0,
+      "reward_margin": 0.186,
+      "chosen_reward": -12.8231,
+      "rejected_reward": -13.009,
+      "step": 3
+    }
+  ],
+  "adapter_path": "./outputs/smoke_test/stage2_simpo\\final_simpo_adapter"
+}

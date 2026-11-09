@@ -1,0 +1,45 @@
+# ============================================================================
+# Stage 3: 群组相对策略优化 (GRPO, Group Relative Policy Optimization) 配置文件
+# 对应科学问题 RQ3：基于可验证规则奖励的强化学习能否激发小模型格式遵循与自我纠错能力
+# ============================================================================
+
+experiment_name: "rl_qwen2.5_1.5b_grpo"
+seed: 42
+
+model:
+  model_name_or_path: "Qwen/Qwen2.5-1.5B-Instruct"
+  sft_adapter_path: null               # 可选：设为 null 代表 GRPO-Zero（直接从基座强化），或填入 Stage 1 路径代表 SFT+GRPO
+  use_4bit_quantization: true
+  max_prompt_length: 256
+  max_completion_length: 512
+
+grpo:
+  num_generations: 4                   # Group Size G: 每个问题采样 G 条轨迹进行组内优势归一化 (T4 建议 4, A10G 建议 8)
+  temperature: 0.8                     # 采样温度，保证组内探索多样性
+  kl_coef: 0.04                        # KL 散度惩罚系数 β_KL，防止策略崩溃
+  reward_weights:
+    accuracy: 1.0                      # 数值答案正确性奖励权重
+    format: 0.2                        # <think>...</think><answer>...</answer> 格式奖励权重
+    reasoning_steps: 0.1               # 分步推导结构奖励权重
+
+peft:
+  lora_r: 16
+  lora_alpha: 32
+  target_scope: "all_linear"
+
+data:
+  dataset_name: "openai/gsm8k"
+  dataset_subset: "main"
+  max_train_samples: 1500              # GRPO 在线生成开销较大，精选 1500 条即可观察明显收敛趋势
+
+training:
+  output_dir: "./outputs/stage3_grpo"
+  num_train_epochs: 1
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 5.0e-6
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.05
+  logging_steps: 5
+  save_steps: 100
+  gradient_checkpointing: true

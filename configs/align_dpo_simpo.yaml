@@ -1,0 +1,41 @@
+# ============================================================================
+# Stage 2: 离线偏好对齐 (DPO vs. SimPO) 配置文件
+# 对应科学问题 RQ2：有参考模型 DPO 与无参考模型长度归一化 SimPO 的长度偏见与准确率对比
+# ============================================================================
+
+experiment_name: "align_qwen2.5_1.5b_simpo"
+seed: 42
+
+model:
+  base_model_name_or_path: "Qwen/Qwen2.5-1.5B"
+  sft_adapter_path: "./outputs/stage1_sft/final_adapter"   # 基于 Stage 1 SFT 产物继续训练
+  use_4bit_quantization: true
+  max_seq_length: 1024
+  max_prompt_length: 384
+
+alignment:
+  algorithm: "simpo"                   # 消融变量: "dpo" (需 Reference Model) vs. "simpo" (无 Reference Model + 长度归一化)
+  beta: 2.0                            # DPO 推荐 0.1；SimPO 推荐 2.0 ~ 2.5
+  simpo_gamma: 0.5                     # SimPO 专属目标奖励边际 (Target Reward Margin γ)
+
+peft:
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_scope: "all_linear"
+
+data:
+  dataset_name: "argilla/distilabel-math-preference-dpo"
+  max_train_samples: 2000
+
+training:
+  output_dir: "./outputs/stage2_align"
+  num_train_epochs: 1
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8       # 偏好对齐需要更高的稳定性，等效 Batch Size = 16
+  learning_rate: 5.0e-6                # 对齐阶段学习率需比 SFT 小 1~2 个数量级
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.1
+  logging_steps: 10
+  save_steps: 100
+  gradient_checkpointing: true

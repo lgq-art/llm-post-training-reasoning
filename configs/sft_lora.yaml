@@ -1,0 +1,41 @@
+# ============================================================================
+# Stage 1: 监督微调 (Supervised Fine-Tuning, SFT) 配置文件
+# 对应科学问题 RQ1：探究 LoRA vs. DoRA、不同秩 (Rank) 与插入模块对推理能力的影响
+# ============================================================================
+
+experiment_name: "sft_qwen2.5_1.5b_lora_r16"
+seed: 42
+
+model:
+  model_name_or_path: "Qwen/Qwen2.5-1.5B"
+  use_4bit_quantization: true          # T4 (16GB) 建议开启 4-bit QLoRA；A10G/L4 (24GB) 可设为 false 使用 bf16
+  torch_dtype: "bfloat16"              # T4 若不支持 bf16 会自动回退至 float16
+  max_seq_length: 1024
+
+peft:
+  use_peft: true
+  use_dora: false                      # 消融变量 1: false 为标准 LoRA, true 为权重分解 DoRA
+  lora_r: 16                           # 消融变量 2: 秩 r ∈ {8, 16, 64}
+  lora_alpha: 32                       # 通常设为 2 * lora_r
+  lora_dropout: 0.05
+  target_scope: "all_linear"           # 消融变量 3: "attn_only" (仅 q,k,v,o) vs "all_linear" (含 MLP gate,up,down)
+
+data:
+  dataset_name: "openai/gsm8k"
+  dataset_subset: "main"
+  max_train_samples: 5000              # 采样数，设为 -1 则使用全部 7473 条
+  max_eval_samples: 200                # 训练过程中的验证集大小
+
+training:
+  output_dir: "./outputs/stage1_sft"
+  num_train_epochs: 2
+  per_device_train_batch_size: 4
+  gradient_accumulation_steps: 4       # 等效总 Batch Size = 4 * 4 = 16
+  learning_rate: 2.0e-4
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.05
+  weight_decay: 0.01
+  logging_steps: 10
+  save_steps: 200
+  eval_steps: 200
+  gradient_checkpointing: true         # 显著节省激活显存

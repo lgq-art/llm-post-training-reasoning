@@ -1,0 +1,50 @@
+{
+  "stage": "sft",
+  "total_steps": 8,
+  "final_loss": 6.3008,
+  "elapsed_sec": 0.3,
+  "peak_vram_gb": 0.0,
+  "loss_history": [
+    {
+      "step": 1,
+      "epoch": 0.25,
+      "loss": 6.3983
+    },
+    {
+      "step": 2,
+      "epoch": 0.5,
+      "loss": 6.3791
+    },
+    {
+      "step": 3,
+      "epoch": 0.75,
+      "loss": 6.4467
+    },
+    {
+      "step": 4,
+      "epoch": 1.0,
+      "loss": 6.3713
+    },
+    {
+      "step": 5,
+      "epoch": 1.25,
+      "loss": 6.388
+    },
+    {
+      "step": 6,
+      "epoch": 1.5,
+      "loss": 6.3646
+    },
+    {
+      "step": 7,
+      "epoch": 1.75,
+      "loss": 6.3633
+    },
+    {
+      "step": 8,
+      "epoch": 2.0,
+      "loss": 6.3008
+    }
+  ],
+  "adapter_path": "./outputs/smoke_test/stage1_sft\\final_adapter"
+}
